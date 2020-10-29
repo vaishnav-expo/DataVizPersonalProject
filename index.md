@@ -3,35 +3,14 @@
 You can use the [editor on GitHub](https://github.com/vaishnav-expo/DataVizPersonalProject/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/vaishnav-expo/DataVizPersonalProject/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+# Name : Vaishnav Kshirsagar (20566261)
+## Storytelling: Earthquake statistics across the world
+### Background and motivation:
+In the most destructive disasters list till now, two of them in the top 4 are earthquakes. In spite of having the data related to the previously happened earthquake events, it is really hard to use that data to analyze for making future predictions. There is a lot of need to know the earthquake-prone areas and where more care should be taken. The motivation for choosing the dataset is to help the scientists get to know about which are the earthquake-prone areas also for the government to be prepared for facing such unexpected disasters to reduce the loss.
+### Description:
+The project is an attempt to help the researchers and people interested in geospacial science about earthquakes. The project is a story telling about the earthquakes happened in United States in last 2 years (2018-01-01 to 2020-10-28). It contains 4 main visualizations.
+1. Symbol map: symbol map of the regions where the earthquake strikes in 2018 and a user can select a year by filtering. Then for the same data the user can see subsequent followinf visualizations:
+2. HeatMap: To analyze the trends in umber of earthquakes for particular regions.
+3. Multiline chart: To analyze trends in the magnitudes of the earthquake in the selected regions.
+4. Histogram: To see the trend between the magnitude of the earthquake and depth at which the earthquake struck.
+This will help researchers to see functional details of the historic data about the earthquakes in USA for study.
