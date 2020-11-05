@@ -29,5 +29,12 @@ As shown in revised proposal, the result is getting in symbol map. As the aim is
 
 Current result from symbol maps (in d3.js)
 
-![](images/symbolmapbasic.PNG)
+![](images/symbolMap.PNG)
 
+### Upcoming immediate milestones
+
+- `(Week 3)` P2 will be added
+- `(Week 3)` P3 will be added and all sync up will be done
+
+#### Roadblocks
+- The dataset has lots of outliers and takes time to process.
