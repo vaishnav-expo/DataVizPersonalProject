@@ -33,7 +33,9 @@ Current result for symbol maps (in d3.js)
 
 The result is a heatmap of the top three places over all the months.
 
+Current result for heat maps (in d3.js)
 
+![](images/heatmap.PNG)"
 
 ### Upcoming immediate milestones
 
