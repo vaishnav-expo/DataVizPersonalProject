@@ -26,7 +26,7 @@ As shown in revised proposal, the result is getting in symbol map. As the aim is
 
 Current result for symbol maps (in d3.js)
 
-![](images/symbolmapbasic.PNG)
+![](images/symbolMap.PNG)
 
 ## P2: For the top three regions, how many earthquakes struck in which months of the year?
 - The researchers can analyze the changes in the number of earthquakes according to the months and can see monthly trends in the number of earthquakes.
