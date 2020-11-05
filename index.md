@@ -1,5 +1,3 @@
-###### Name : Vaishnav Kshirsagar (20566261)
-###### Storytelling: Earthquake statistics across the world
 ### Background and motivation:
 In the most destructive disasters list till now, two of them in the top 4 are earthquakes. In spite of having the data related to the previously happened earthquake events, it is really hard to use that data to analyze for making future predictions. There is a lot of need to know the earthquake-prone areas and where more care should be taken. The motivation for choosing the dataset is to help the scientists get to know about which are the earthquake-prone areas also for the government to be prepared for facing such unexpected disasters to reduce the loss.
 ### Description:
