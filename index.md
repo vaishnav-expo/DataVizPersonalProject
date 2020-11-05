@@ -27,5 +27,7 @@ which region is the most earthquake-prone of all.
 
 As shown in revised proposal, the result is getting in symbol map. As the aim is to find the top places where number of earthquake is more, currently I am showing only top 6 places in the symbol map.
 
-Current (created in d3.js)
+Current result from symbol maps (in d3.js)
+
+![](images/symbolmapbasic.PNG)
 
