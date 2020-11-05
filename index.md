@@ -33,7 +33,16 @@ Current result for symbol maps (in d3.js)
 
 The result is a heatmap of the top three places over all the months.
 
-Current result for HeatMap ()
+
+
+### Upcoming immediate milestones
+
+- `(Week 3)` P2 will be added
+- `(Week 3)` P3 will be added and all sync up will be done
+
+#### Roadblocks
+- The dataset has lots of outliers and takes time to process.
+
 
 
 
