@@ -42,8 +42,12 @@ Current result for heat maps (in d3.js)
 - `(Week 3)` P2 will be added
 - `(Week 3)` P3 will be added and all sync up will be done
 
-#### Roadblocks
+### Beta Release
+<a href="betarelease.html" title="About Me">Go to beta release</a>
+
+### Roadblocks
 - The dataset has lots of outliers and takes time to process.
+
 
 
 

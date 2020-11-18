@@ -1,0 +1,50 @@
+<!--References
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Births by State - SymbolMap</title>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+<!--    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>-->
+    <script type="text/javascript" src="https://d3js.org/queue.v1.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+</head>
+
+<!-- CSS -->
+<style>
+
+    .states {
+        fill: #ccc;
+        stroke: #fff;
+    }
+
+    .symbol {
+        fill: #4682b4;
+        fill-opacity: .8;
+        stroke: #fff;
+    }
+
+    div.tooltip {
+        position: absolute;
+        left: 75px;
+        text-align: center;
+        height: 16px;
+        padding: 10px;
+        font-size: 14px;
+        background: #FFFFFF;
+        border: 1px solid #989898;
+        pointer-events: none;
+    }
+
+</style>
+
+<body>
+<h2 align="CENTER">Number of earthquakes in US states</h2>
+<div id="my_symbolmap"></div>
+<script src="SymbolMap.js"></script>
+<p>Source: U.S.G.S.</p>
+</body>
+
+</html>
