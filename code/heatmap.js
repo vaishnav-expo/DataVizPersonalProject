@@ -173,6 +173,28 @@ d3.csv("monthyearcnt.csv")
             .attr("transform", "translate(0 , "+ (-90) + ")")
             .call(xAxis);
 
+        // create a tooltip
+        var tooltip = d3.select("#my_heatmap")
+            .append("div")
+            .style("opacity", 0)
+            .attr("class", "tooltip")
+            .style("background-color", "white")
+            .style("border", "solid")
+            .style("border-width", "2px")
+            .style("border-radius", "5px")
+            .style("padding", "5px")
+
+        var mouseover = function(d) {
+            tooltip.style("opacity", 1)
+        }
+        var mousemove = function(e,d) {
+            tooltip
+                .html("Number of earthquakes : " + d[2])
+        }
+        var mouseleave = function(d) {
+            tooltip.style("opacity", 0)
+        }
+
         //Adding the squares with colour
         svg.selectAll()
             .data(finalData)
@@ -185,6 +207,10 @@ d3.csv("monthyearcnt.csv")
             .attr("width", xScale.bandwidth() )
             .attr("height", yScale.bandwidth() )
             .style("fill", function(d) { return colorScale(d[2])} )
+            .on("mouseover", mouseover)
+            .on("mousemove", mousemove)
+            .on("mouseleave", mouseleave)
+
     }).catch((error) => {
     throw error;
 });

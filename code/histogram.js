@@ -67,6 +67,36 @@ d3.csv("updatedearthquake.csv")
             .style("text-anchor", "middle")
             .text("Number of earthquakes");
 
+        var tooltip = d3.select("#my_histogram")
+            .append("div")
+            .style("opacity", 0)
+            .attr("class", "tooltip")
+            .style("background-color", "white")
+            .style("border-width", "2px")
+            .style("border-radius", "5px")
+            .style("padding", "5px")
+
+        // A function that change this tooltip when the user hover a point.
+        // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
+        var showTooltip = function(e,d) {
+            console.log("Data : ",d)
+            tooltip
+                .transition()
+                .duration(100)
+                .style("opacity", 1)
+            tooltip
+                .html("Range: " + d.x0 + " - " + d.x1 + "\n" +
+                    "Number of earthquakes: "+ d.length)
+        }
+
+        // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+        var hideTooltip = function(d) {
+            tooltip
+                .transition()
+                .duration(100)
+                .style("opacity", 0)
+        }
+
         // append the bar rectangles to the svg element
         svg.selectAll("rect")
             .data(bins)
@@ -77,6 +107,8 @@ d3.csv("updatedearthquake.csv")
             .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
             .attr("height", function(d) { return height - y(d.length); })
             .style("fill", "steelblue")
+            .on("mouseover", showTooltip)
+            .on("mouseleave", hideTooltip)
 
     }).catch((error) => {
     throw error;
