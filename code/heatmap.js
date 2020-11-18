@@ -1,6 +1,6 @@
 var margin = {top: 150, right: 20, bottom: 40, left: 100},
-    width = 800 - margin.left - margin.right,
-    height = 450 - margin.top - margin.bottom;
+    width = 750 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
 
 var cities = ["CA","Nevada","Idaho"];
 
@@ -104,7 +104,7 @@ d3.csv("monthyearcnt.csv")
 
         //Scale for different colour for different values
         var colorScale = d3.scaleSequential()
-            .interpolator(d3.interpolateRgb("#99FF99", "#009900"))
+            .interpolator(d3.interpolateRgb("#FFcccc", "#FF0000"))
             .domain([0,300]);
 
         //creating gradient legend

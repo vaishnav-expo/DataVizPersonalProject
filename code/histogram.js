@@ -57,7 +57,7 @@ d3.csv("updatedearthquake.csv")
             .attr("x", (width/2))
             .attr("y", height+margin.bottom-5)
             .style("text-anchor", "middle")
-            .text("Range of depth");
+            .text("Depth(in km)");
 
         //y-axis labels
         svg.append("text")
