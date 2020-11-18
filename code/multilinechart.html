@@ -5,20 +5,25 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
 
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
-    .line {
-        fill: none;
-        stroke: steelblue;
-        stroke-width: 1.5px;
-    }
+<head>
+    <meta charset="UTF-8">
+    <title>Multiline Chart</title>
+    <script src="//d3js.org/d3.v4.min.js"></script>
+    <style>
+        .line {
+            fill: none;
+            stroke: steelblue;
+            stroke-width: 1.5px;
+        }
 
-</style>
+    </style>
+</head>
+<body>
 <svg width="960" height="500"></svg>
-<script src="//d3js.org/d3.v4.min.js"></script>
 <script>
 
     var svg = d3.select("svg"),
-        margin = {top: 100, right: 80, bottom: 30, left: 50},
+        margin = {top: 100, right: 80, bottom: 40, left: 70},
         width = svg.attr("width") - margin.left - margin.right,
         height = svg.attr("height") - margin.top - margin.bottom,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -140,23 +145,28 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
                 .attr("y", -50)
                 .attr("text-anchor", "middle")
                 .style("font-size", "20px")
-                .text("A8: Interaction in D3 (Filtering, brushing and zooming)");
+                .text("Multiline chart of earthquakes in California from 2018-2020");
 
             g.append("g")
                 .attr("class", "axis axis--x")
                 .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(x))
+                .append("text")
                 .attr("fill", "#000")
-                .call(d3.axisBottom(x));
+                .attr("y",35)
+                .attr("x",width/2)
+                .text("Months");
 
             g.append("g")
                 .attr("class", "axis axis--y")
                 .call(d3.axisLeft(y))
                 .append("text")
                 .attr("transform", "rotate(-90)")
-                .attr("y", 6)
+                .attr("y", -50)
+                .attr("x", -90)
                 .attr("dy", "0.71em")
                 .attr("fill", "#000")
-                .text("numOfEarthquakes, ºF");
+                .text("Number of earthquakes");
 
             var legend = g.selectAll(".city")
                 .data(years)
@@ -206,7 +216,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
             temp = year.append("path")
                 .attr("class", function(d) {
                     console.log("year" + d.year);
-                    return "line "+ d.year;
+                    return "line a"+ d.year;
                 })
                 .attr("d", function (d) {
                     return line(d.values);
@@ -250,13 +260,14 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
     }
 
     function select(year) {
+        year = year.trim();
         console.log("Selceted year : ",year);
-        let ID = "2018";
-        if(year === " 2019"){
-            ID="2019";
+        let ID = "a2018";
+        if(year === "a2019"){
+            ID="a2019";
         }
-        else if(year === " 2020"){
-            ID="2020";
+        else if(year === "a2020"){
+            ID="a2020";
         }
         d3.selectAll(".line")
             .transition().duration(150).style("stroke", "lightgrey")
