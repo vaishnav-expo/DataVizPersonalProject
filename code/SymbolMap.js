@@ -1,6 +1,6 @@
 var margin = {top: 70, right: 30, bottom: 20, left: 120},
-    width = 900 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 1100 - margin.left - margin.right,
+    height = 650 - margin.top - margin.bottom;
 
 var radius = d3.scale.sqrt()
     .domain([0, 400])

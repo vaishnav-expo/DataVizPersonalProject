@@ -28,7 +28,8 @@ var svg = d3.select("#my_heatmap").append("svg")
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
+        "translate(" + margin.left + "," + margin.top + ")")
+
 d3.csv("monthyearcnt.csv")
     .then((data) => {
         console.log(data);
