@@ -1,0 +1,70 @@
+---
+layout: default
+---
+<body>
+<h2>Final Release</h2>
+<h3><a href="https://www.usgs.gov/natural-hazards/earthquake-hazards/earthquakes">Link to the dataset</a> </h3>
+<h3>Back ground and Motivation</h3>
+<p>In the most destructive disasters list till now, two of them in the top 4 are earthquakes. In spite of having the data related to the previously happened earthquake events, it is really hard to use that data to analyze for making future predictions. There is a lot of need to know the earthquake-prone areas and where more care should be taken. The motivation for choosing the dataset is to help the scientists get to know about which are the earthquake-prone areas also for the government to be prepared for facing such unexpected disasters to reduce the loss.</p>
+<h3>Description and objectives</h3>
+<p>The project is an attempt to help the researchers and people interested in geospacial science about earthquakes. The project is a story telling about the earthquakes happened in United States in last 2 years (2018-01-01 to 2020-10-28). It contains 4 main visualizations.</p>
+<ol>
+    <li>What are the top three most earthquake-prone regions by the province/state in the United States?</li>
+    <ul>
+        <li>Once the scientists can see which are the earthquake-prone regions they can study different statistics about these areas and compare them according to how much earthquake-prone the area is by getting how many earthquakes are happening in the region. Also, they can analyze which region is the most earthquake-prone of all.</li>
+        <li>In order to get this insights we can see the data mapped on a United States' symbol map.</li>
+        <li>Here is the demo.</li>
+        <!--        <img src="../images/betareleasesymbolmap.png" alt="Symbol map" width="800" height="470">-->
+        <iframe src="SymbolMap.html"  style="border:none;height:700px;width:1000px;" title="Symbol Map"></iframe>
+        <li>We can clearly see from the map that California is domniating over all the states. But, taking the data only of a single state to get trends of earthquakes according to months of year will be unethical. So, lets select the top three states for further analysis.</li>
+        <li>By hovering on the circles we can see the value for better understanidng. We can compare states from this symbol map by this which is our first objective.</li>
+        <li>We got that California, Nevada and Idaho are the top three states having the higher number of earthquakes than other states. So our first objective is achieved here.</li>
+    </ul>
+    <br>
+    <br>
+    <li>For the top three regions, what are the trends in number of earthquakes according to the months of year and how many earthquakes are in each month for each of the three cities?</li>
+    <ul>
+        <li>The researchers can analyze the changes in the number of earthquakes according to the months and can see monthly trends in the number of earthquakes in these areas.</li>
+        <li>In order to show this in a nice way, we can show it with a heatmap of states,months and number of earthquakes.</li>
+        <li>Here is the demo.</li>
+        <iframe src="heatmap.html"  style="border:none;height:450px;width:1000px;" title="Heat Map"></iframe>
+        <li>We can see that the number of earthquakes in the middle part of the year like May, June and July has more number of earthquakes than other months.</li>
+        <li>We got the trend of earthquakes in months here which was our second objective.</li>
+    </ul>
+    <br>
+    <br>
+    <li>For the location having the maximum number of earthquakes, how are the magnitudes of the earthquake changing through the year compared to other years></li>
+    <ul>
+        <li>Scientists would like to know how is the magnitude of the earthquakes varying throughout the year for the region having the most number of earthquakes.</li>
+        <li>To get this insight we can show multiline chart where there will be multiple lines for each year and showing monthly data for that year.</li>
+        <li>Here is the demo.</li>
+        <iframe src="multilinechart.html"  style="border:none;height:600px;width:1000px;" title="Multiline chart"></iframe>
+        <li>We can get that the most of the time it is same over the years but in 2019, during June, July and August there is a huge increase in number of earthquakes which should be studied.</li>
+        <li>Here, we got that number of earthquakes suddenly rise in California in June, July, August which was our objective.</li>
+    </ul>
+    <br>
+    <br>
+    <li>How is the depth at which the earthquake occurs related to the high magnitude of the earthquake?</li>
+    <ul>
+        <li>It will be good to compare the depth to the higher magnitude of the earthquake as the geospatial plates in the earth release energy which results in earthquakes. Scientists obviously want to know how the depth of the earthquakes is related to the higher magnitude of the earthquake.</li>
+        <li>We can clearly get this insight on the histogram of depth and number of higher magnitude earthquakes in that depth bin.</li>
+        <li>Here is the demo.</li>
+        <iframe src="histogram.html"  style="border:none;height:600px;width:1000px;" title="Histogram"></iframe>
+        <li>We can get that most of the higher magnitude earthquakes struck at lower depth only. Mostly higer magnitude earthquakes came at a depth of 10 km. So, it would be better to study the lower depth areas.</li>
+        <li>Here, we got that most of the higher magnitude earthquakes came within the 15 km depth. by getting this insight we achieved our fourth objective.</li>
+    </ul>
+</ol>
+
+<h3>Progress</h3>
+<p>All the 4 visualizations are done with most of the interactions and updates from the beta release. Upload to the website is done.</p>
+
+<h3>Future work</h3>
+<ul>
+    <li>Add more filters to get more insights from the data.</li>
+    <li>Add extra visualizations or features.</li>
+</ul>
+
+<h3>Roadblocks</h3>
+<h4>As the data is not available for November and December for 2020 till now. It is becoming difficult to add filtering by year to the visualizations.</h4>
+
+</body>
