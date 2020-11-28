@@ -14,40 +14,17 @@ This will help researchers to see functional details of the historic data about 
 ### Overview:
 The project will be composed of total four visualizations. In the first visualization, we will see the details of earthquakes in overall US and then we will move toward more deep level by considering top places where number of earthquakes is more. We will do analysis of such places using attributes like magnitude of earthquake and depth during a timestamps separately. Then, in the last visualization we will see how depth at which the earthquake struck and the ,agnitude of the earthquake are related to each other.
 
-### Progress:
-The data preprocessing is done which was a difficult task to do as data was having a lot of null values and two visualizations are done at basic level but more interaction is needed to be done. Hovering feature is enabled till now. 
-
-## P1: What are the top three most earthquake-prone regions by the province/state in the United States?
-- Once the scientists can see which are the earthquake-prone regions they can study different statistics about these areas and compare them according to how much earthquake prone the area is by getting how many earthquakes are happening in the region. Also, they can analyze which region is the most earthquake-prone of all.
-
-As shown in revised proposal, the result is getting in symbol map. As the aim is to find the top places where number of earthquake is more, currently I am showing only top 6 places in the symbol map.
-
-Current result for symbol maps (in d3.js)
-
-![](images/symbolMap.PNG)
-
-## P2: For the top three regions, how many earthquakes struck in which months of the year?
-- The researchers can analyze the changes in the number of earthquakes according to the months and can see monthly trends in the number of earthquakes.
-
-The result is a heatmap of the top three places over all the months.
-
-Current result for heat maps (in d3.js)
- 
-![](images/heatmap.PNG)
-
-### Upcoming immediate milestones
-
-- `(Week 3)` P2 will be added
-- `(Week 3)` P3 will be added and all sync up will be done
-
-### Roadblocks
-- The dataset has lots of outliers and takes time to process.
+### Alpha release
+[Go to alpha release](code/alpharelease.html)
 
 ### Beta release
 [Go to beta release](code/betarelease.html)
 
 ### Final release
 [Go to final release](code/finalrelease.html)
+
+### Roadblocks
+- The dataset has lots of outliers and takes time to process.
 
 
 
