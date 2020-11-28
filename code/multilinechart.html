@@ -23,9 +23,9 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
 <script>
 
     var svg = d3.select("svg"),
-        margin = {top: 100, right: 80, bottom: 40, left: 70},
+        margin = {top: 100, right: 80, bottom: 40, left: 90},
         width = svg.attr("width") - margin.left - margin.right,
-        height = svg.attr("height") - margin.top - margin.bottom,
+        height = svg.attr("height") - margin.top - margin.bottom - 20,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
@@ -73,7 +73,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
         // line.x(function(d) { return xz(d.months); });
             // .y(function(d) { return yz(d.numOfearthquakes); });
 
-        temp.attr("d", function(d){return line(d.values);}); //zxc
+        //temp.attr("d", function(d){return line(d.values);}); //zxc
     }
     function drawChart(filterData) {
         d3.csv("monthyearcnt.csv", function (error, data) {
@@ -153,8 +153,9 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
                 .call(d3.axisBottom(x))
                 .append("text")
                 .attr("fill", "#000")
-                .attr("y",35)
+                .attr("y",45)
                 .attr("x",width/2)
+                .attr("font-size","18px")
                 .text("Months");
 
             g.append("g")
@@ -162,8 +163,9 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
                 .call(d3.axisLeft(y))
                 .append("text")
                 .attr("transform", "rotate(-90)")
-                .attr("y", -50)
-                .attr("x", -90)
+                .attr("y", -65)
+                .attr("x", -80)
+                .attr("font-size","18px")
                 .attr("dy", "0.71em")
                 .attr("fill", "#000")
                 .text("Number of earthquakes");
@@ -263,10 +265,10 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
         year = year.trim();
         console.log("Selceted year : ",year);
         let ID = "a2018";
-        if(year === "a2019"){
+        if(year === "2019"){
             ID="a2019";
         }
-        else if(year === "a2020"){
+        else if(year === "2020"){
             ID="a2020";
         }
         d3.selectAll(".line")
