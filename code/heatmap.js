@@ -104,13 +104,14 @@ d3.csv("monthyearcnt.csv")
             .select(".domain").remove();
 
         //Scale for different colour for different values
-        var colorScale = d3.scaleSequential()
-            .interpolator(d3.interpolateRgb("#FFcccc", "#FF0000"))
-            .domain([0,300]);
+        var colorScale = d3.scaleQuantize()
+            // .interpolator(d3.interpolateRgb("#FFcccc", "#FF0000"))
+            .domain(d3.extent(finalData))
+            .range(["#FFcccc", "#FF0000"]);
 
         //creating gradient legend
-        var countScale = d3.scaleLinear()
-            .domain([0, 300])
+        var countScale = d3.scaleQuantize()
+            .domain(d3.extent(finalData))
             .range([0, width])
 
         var numStops = 10;
@@ -160,9 +161,9 @@ d3.csv("monthyearcnt.csv")
             .style("text-anchor", "middle")
             .text("Number of earthquakes");
 
-        var xScale1 = d3.scaleLinear()
+        var xScale1 = d3.scaleQuantize()
             .range([-legendWidth/2, legendWidth/2])
-            .domain([ 0,300] );
+            .domain(d3.extent(finalData) );
 
         var xAxis = d3.axisBottom()
             .ticks(5)

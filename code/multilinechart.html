@@ -15,7 +15,6 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
             stroke: steelblue;
             stroke-width: 1.5px;
         }
-
     </style>
 </head>
 <body>
@@ -27,7 +26,6 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
         width = svg.attr("width") - margin.left - margin.right,
         height = svg.attr("height") - margin.top - margin.bottom - 20,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 
     var x = d3.scaleLinear().range([0, width]),
         y = d3.scaleLinear().range([height, 0]),
@@ -41,7 +39,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
             return y(d.numOfEarthquakes);
         });
 
-    var filtered={"2018":true,"2019":true,"2020":true};
+    var filtered={"2014":true,"2015":true,"2016":true,"2017":true,"2018":true,"2019":true,"2020":true};
 
     // zoom effect
     var zoom = d3.zoom()
@@ -57,6 +55,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
         .attr("fill", "none")
         .attr("pointer-events", "all")
         .call(zoom);
+
     function zoomed() {
         var xz = d3.event.transform.rescaleX(x);
         var yz = d3.event.transform.rescaleY(y);
@@ -75,8 +74,9 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
 
         //temp.attr("d", function(d){return line(d.values);}); //zxc
     }
+
     function drawChart(filterData) {
-        d3.csv("monthyearcnt.csv", function (error, data) {
+        d3.csv("monthyearcntml.csv", function (error, data) {
             if (error) throw error;
 
             data = data.filter(function(d, i){
@@ -85,7 +85,6 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
             })
 
             console.log("data: ",data)
-
 
             var modifiedData = {};
             data.forEach((i,k) => {
@@ -122,6 +121,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
             console.log("Final Data : ",years);
 
             x.domain([1,12]);
+
             y.domain([
                 d3.min(years, function (c) {
                     return d3.min(c.values, function (d) {
@@ -134,6 +134,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
                     });
                 })
             ]);
+
             z.domain(years.map(function (c) {
                 return c.year;
             }));
@@ -214,7 +215,6 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
                 .enter().append("g")
                 .attr("class", "year");
 
-
             temp = year.append("path")
                 .attr("class", function(d) {
                     console.log("year" + d.year);
@@ -264,8 +264,20 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
     function select(year) {
         year = year.trim();
         console.log("Selceted year : ",year);
-        let ID = "a2018";
-        if(year === "2019"){
+        let ID = "a2014";
+        if(year === "2015"){
+            ID="a2015";
+        }
+        else if(year === "2016"){
+            ID="a2016";
+        }
+        else if(year === "2017"){
+            ID="a2017";
+        }
+        else if(year === "2018"){
+            ID="a2018";
+        }
+        else if(year === "2019"){
             ID="a2019";
         }
         else if(year === "2020"){
