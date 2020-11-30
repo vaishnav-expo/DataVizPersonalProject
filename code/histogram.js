@@ -13,7 +13,7 @@ d3.csv("updatedearthquake.csv")
     .then((data) => {
 
         data = data.filter(function(d, i){
-            if(d["mag"] > 4)
+            if(d["mag"] > 4.5)
                 return d;
         })
 

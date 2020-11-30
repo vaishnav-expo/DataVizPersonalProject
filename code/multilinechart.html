@@ -33,10 +33,9 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
 
     var line = d3.line()
         .curve(d3.curveBasis)
-        .x(function(d) { return x(d.month); })
+        .x(function(d) {return x(+d.month); })
         .y(function(d) {
-            console.log(d);
-            return y(d.numOfEarthquakes);
+            return y(+d.numOfEarthquakes);
         });
 
     var filtered={"2014":true,"2015":true,"2016":true,"2017":true,"2018":true,"2019":true,"2020":true};
@@ -69,10 +68,11 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
             .call(d3.axisLeft(x).scale(yz));
 
         //line
-        // line.x(function(d) { return xz(d.months); });
-            // .y(function(d) { return yz(d.numOfearthquakes); });
+        // line.x(function(d) { console.log(d);return xz(d.month); });
+             line.y(function(d) { return yz(d.numOfEarthquakes); });
 
-        //temp.attr("d", function(d){return line(d.values);}); //zxc
+
+        temp.attr("d", function(d){console.log(d.values);return line(d.values);}); //zxc
     }
 
     function drawChart(filterData) {

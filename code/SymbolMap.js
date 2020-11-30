@@ -60,6 +60,7 @@ function ready(error, us, centroid, data) {
 
     console.log("Map of counts : ",mapStateCount);
 
+
     svg.selectAll(".symbol")
         .data(centroid.features.sort(function(a, b) { return b.properties.earthquakecount - a.properties.earthquakecount; }))
         .enter().append("path")

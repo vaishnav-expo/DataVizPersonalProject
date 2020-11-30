@@ -27,8 +27,7 @@ var svg = d3.select("#my_heatmap").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
 d3.csv("monthyearcnt.csv")
     .then((data) => {
@@ -72,7 +71,7 @@ d3.csv("monthyearcnt.csv")
         //Heading
         svg.append("text")
             .attr("x", (width / 2))
-            .attr("y", (margin.top / 2) - 180)
+            .attr("y", (margin.top / 2) - 1200)
             .attr("text-anchor", "middle")
             .style("font-size", "20px")
             .text("Heat Map of total number of earthquakes in top three states according to months");
@@ -104,14 +103,14 @@ d3.csv("monthyearcnt.csv")
             .select(".domain").remove();
 
         //Scale for different colour for different values
-        var colorScale = d3.scaleQuantize()
+        var colorScale = d3.scaleQuantile()
             // .interpolator(d3.interpolateRgb("#FFcccc", "#FF0000"))
-            .domain(d3.extent(finalData))
-            .range(["#FFcccc", "#FF0000"]);
+            .domain([0,20,40,200,400,2000])
+            .range(["#fef0d9","#fdd49e","#fdbb84","#fc8d59", "#e34a33", "#b30000"]);
 
         //creating gradient legend
-        var countScale = d3.scaleQuantize()
-            .domain(d3.extent(finalData))
+        var countScale = d3.scaleQuantile()
+            .domain([0,20,40,200,400,2000])
             .range([0, width])
 
         var numStops = 10;
@@ -145,7 +144,6 @@ d3.csv("monthyearcnt.csv")
             .attr("class", "legendWrapper")
             .attr("transform", "translate(" + (width/2) + "," + (70) + ")");
 
-
         legendsvg.append("rect")
             .attr("class", "legendRect")
             .attr("x", -legendWidth/2)
@@ -161,9 +159,9 @@ d3.csv("monthyearcnt.csv")
             .style("text-anchor", "middle")
             .text("Number of earthquakes");
 
-        var xScale1 = d3.scaleQuantize()
+        var xScale1 = d3.scaleQuantile()
             .range([-legendWidth/2, legendWidth/2])
-            .domain(d3.extent(finalData) );
+            .domain([0,20,40,200,400,2000]);
 
         var xAxis = d3.axisBottom()
             .ticks(5)
@@ -188,10 +186,14 @@ d3.csv("monthyearcnt.csv")
         var mouseover = function(d) {
             tooltip.style("opacity", 1)
         }
+
+        var formatComma = d3.format(",")
+
         var mousemove = function(e,d) {
             tooltip
-                .html("Number of earthquakes : " + d[2])
+                .html("Number of earthquakes : " +formatComma(d[2]))
         }
+
         var mouseleave = function(d) {
             tooltip.style("opacity", 0)
         }
