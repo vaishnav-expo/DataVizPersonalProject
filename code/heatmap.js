@@ -139,7 +139,7 @@ d3.csv("monthyearcnt.csv")
         console.log("width = ",width)
         console.log("height = ",height)
 
-        svg.append("text").attr("x",width - 610).attr("y",height - 260).text("Legend scale").style("font-size", "15px").attr("alignment-baseline","middle");
+        svg.append("text").attr("x",width - 610).attr("y",height - 260).text("Number of earthquakes").style("font-size", "15px").attr("alignment-baseline","middle");
 
         svg.append("circle").attr("cx",width - 610).attr("cy",height - 225).attr("r", 6).style("fill", "#fef0d9");
         svg.append("text").attr("x",width - 590).attr("y",height - 225).text("0-20").style("font-size", "15px").attr("alignment-baseline","middle");
