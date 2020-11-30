@@ -40,41 +40,6 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
 
     var filtered={"2014":true,"2015":true,"2016":true,"2017":true,"2018":true,"2019":true,"2020":true};
 
-    // zoom effect
-    var zoom = d3.zoom()
-        .scaleExtent([1 / 4, 8])
-        .extent([[margin.left, 0], [width - margin.right, height]])
-        .translateExtent([[margin.left, -Infinity], [width - margin.right, Infinity]])
-        .on("zoom", zoomed);
-
-    // zoom panel
-    var zoomRect = svg.append("rect")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("fill", "none")
-        .attr("pointer-events", "all")
-        .call(zoom);
-
-    function zoomed() {
-        var xz = d3.event.transform.rescaleX(x);
-        var yz = d3.event.transform.rescaleY(y);
-
-        // x axis change when zoom
-        g.select(".axis--x")
-            .call(d3.axisBottom(x).scale(xz));
-
-        // y
-        g.select(".axis--y")
-            .call(d3.axisLeft(x).scale(yz));
-
-        //line
-        // line.x(function(d) { console.log(d);return xz(d.month); });
-             line.y(function(d) { return yz(d.numOfEarthquakes); });
-
-
-        temp.attr("d", function(d){console.log(d.values);return line(d.values);}); //zxc
-    }
-
     function drawChart(filterData) {
         d3.csv("monthyearcntml.csv", function (error, data) {
             if (error) throw error;
@@ -229,9 +194,6 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
 
             console.log("Temp : ",temp);
 
-
-            zoomRect.call(zoom.transform, d3.zoomIdentity);
-
             year.append("text")
                 .datum(function (d) {
                     return {year: d.year, value: d.values[d.values.length - 1]};
@@ -245,11 +207,6 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
                 .text(function (d) {
                     return d.year;
                 });
-
-            g.selectAll(".year")
-                .data(years.filter(function(d){return filterData[d.year]==true;}))
-                .exit()
-                .remove();
         });
     }
 
