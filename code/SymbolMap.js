@@ -60,6 +60,7 @@ function ready(error, us, centroid, data) {
 
     console.log("Map of counts : ",mapStateCount);
 
+    var formatComma = d3.format(",")
 
     svg.selectAll(".symbol")
         .data(centroid.features.sort(function(a, b) { return b.properties.earthquakecount - a.properties.earthquakecount; }))
@@ -74,7 +75,7 @@ function ready(error, us, centroid, data) {
             d3.select(this).transition().duration(300).style({'opacity': 1, 'stroke': 'black', 'stroke-width': 1.5});
             div.transition().duration(300)
                 .style("opacity", 1)
-            div.text(d.properties.name + ": " + d.properties.earthquakecount)
+            div.text(d.properties.name + ": " + formatComma(d.properties.earthquakecount))
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY -30) + "px");
         })
