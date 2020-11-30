@@ -22,7 +22,7 @@ The project will be composed of total four visualizations. In the first visualiz
 [Go to final release](code/finalrelease.html)
 
 ### Roadblocks
-- The dataset has lots of outliers and takes time to process.
+The dataset has lots of outliers and takes time to process.
 
 
 
