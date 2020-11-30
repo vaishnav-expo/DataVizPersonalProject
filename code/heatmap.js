@@ -136,41 +136,28 @@ d3.csv("monthyearcnt.csv")
                 return colorScale( countPoint[i] );
             });
 
+        console.log("width = ",width)
+        console.log("height = ",height)
 
-        var legendWidth = Math.min(width*0.8, 400);
+        svg.append("text").attr("x",width - 610).attr("y",height - 260).text("Legend scale").style("font-size", "15px").attr("alignment-baseline","middle");
 
-        //drawing the gradient legend
-        var legendsvg = svg.append("g")
-            .attr("class", "legendWrapper")
-            .attr("transform", "translate(" + (width/2) + "," + (70) + ")");
+        svg.append("circle").attr("cx",width - 610).attr("cy",height - 225).attr("r", 6).style("fill", "#fef0d9");
+        svg.append("text").attr("x",width - 590).attr("y",height - 225).text("0-20").style("font-size", "15px").attr("alignment-baseline","middle");
 
-        legendsvg.append("rect")
-            .attr("class", "legendRect")
-            .attr("x", -legendWidth/2)
-            .attr("y", -100)
-            .attr("width", legendWidth)
-            .attr("height", 10)
-            .style("fill", "url(#legend-delay)");
+        svg.append("circle").attr("cx",width - 510).attr("cy",height - 225).attr("r", 6).style("fill", "#fdd49e");
+        svg.append("text").attr("x",width - 490).attr("y",height - 225).text("20-40").style("font-size", "15px").attr("alignment-baseline","middle");
 
-        legendsvg.append("text")
-            .attr("class", "legendTitle")
-            .attr("x", -10)
-            .attr("y", -120)
-            .style("text-anchor", "middle")
-            .text("Number of earthquakes");
+        svg.append("circle").attr("cx",width - 410).attr("cy",height - 225).attr("r", 6).style("fill", "#fdbb84");
+        svg.append("text").attr("x",width - 390).attr("y",height - 225).text("40-200").style("font-size", "15px").attr("alignment-baseline","middle");
 
-        var xScale1 = d3.scaleQuantile()
-            .range([-legendWidth/2, legendWidth/2])
-            .domain([0,20,40,200,400,2000]);
+        svg.append("circle").attr("cx",width - 610).attr("cy",height - 205).attr("r", 6).style("fill", "#fc8d59");
+        svg.append("text").attr("x",width - 590).attr("y",height - 205).text("200-400").style("font-size", "15px").attr("alignment-baseline","middle");
 
-        var xAxis = d3.axisBottom()
-            .ticks(5)
-            .scale(xScale1);
+        svg.append("circle").attr("cx",width - 510).attr("cy",height - 205).attr("r", 6).style("fill", "#e34a33");
+        svg.append("text").attr("x",width - 490).attr("y",height - 205).text("400-2000").style("font-size", "15px").attr("alignment-baseline","middle");
 
-        legendsvg.append("g")
-            .attr("class", "axis")
-            .attr("transform", "translate(0 , "+ (-90) + ")")
-            .call(xAxis);
+        svg.append("circle").attr("cx",width - 410).attr("cy",height - 205).attr("r", 6).style("fill", "#b30000");
+        svg.append("text").attr("x",width - 390).attr("y",height - 205).text(">2000").style("font-size", "15px").attr("alignment-baseline","middle");
 
         // create a tooltip
         var tooltip = d3.select("#my_heatmap")
