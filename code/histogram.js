@@ -12,6 +12,7 @@ var svg = d3.select("#my_histogram").append("svg")
 d3.csv("updatedearthquake.csv")
     .then((data) => {
 
+        // filtering earthquakes with only high magnitude (> 4.5)
         data = data.filter(function(d, i){
             if(d["mag"] > 4.5)
                 return d;
@@ -67,6 +68,7 @@ d3.csv("updatedearthquake.csv")
             .style("text-anchor", "middle")
             .text("Number of earthquakes");
 
+        // tooltip
         var tooltip = d3.select("#my_histogram")
             .append("div")
             .style("opacity", 0)
@@ -77,7 +79,6 @@ d3.csv("updatedearthquake.csv")
             .style("padding", "5px")
 
         // A function that change this tooltip when the user hover a point.
-        // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
         var showTooltip = function(e,d) {
             console.log("Data : ",d)
             tooltip
@@ -89,7 +90,7 @@ d3.csv("updatedearthquake.csv")
                     "Number of earthquakes: "+ d.length)
         }
 
-        // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+        // A function that change this tooltip when the leaves a point
         var hideTooltip = function(d) {
             tooltip
                 .transition()

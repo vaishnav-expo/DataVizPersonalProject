@@ -27,6 +27,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
         height = svg.attr("height") - margin.top - margin.bottom - 20,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    //3 scales for different axes
     var x = d3.scaleLinear().range([0, width]),
         y = d3.scaleLinear().range([height, 0]),
         z = d3.scaleOrdinal(d3.schemeCategory10);
@@ -38,12 +39,15 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
             return y(+d.numOfEarthquakes);
         });
 
+    //setting all years true initially and making a dictionary
     var filtered={"2014":true,"2015":true,"2016":true,"2017":true,"2018":true,"2019":true,"2020":true};
 
+    //mathod to draw the chart dependding on filtered data
     function drawChart(filterData) {
         d3.csv("monthyearcntml.csv", function (error, data) {
             if (error) throw error;
 
+            //filtering the top state only which is California
             data = data.filter(function(d, i){
                 if(d["place"] == "CA")
                     return data;
@@ -51,6 +55,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
 
             console.log("data: ",data)
 
+            //preprocessing to generate format for plotting
             var modifiedData = {};
             data.forEach((i,k) => {
                 var mapStateCount = {};
@@ -85,8 +90,10 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
 
             console.log("Final Data : ",years);
 
+            //x axis domain - months
             x.domain([1,12]);
 
+            //y axis domain - number of earthquakes minimum to maximum
             y.domain([
                 d3.min(years, function (c) {
                     return d3.min(c.values, function (d) {
@@ -100,12 +107,14 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
                 })
             ]);
 
+            // z axis i.e. selectable lines domain - year
             z.domain(years.map(function (c) {
                 return c.year;
             }));
 
             g.selectAll("*").remove();
 
+            // heading
             g.append("text")
                 .attr("x", width/2)
                 .attr("y", -50)
@@ -113,6 +122,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
                 .style("font-size", "20px")
                 .text("Multiline chart of earthquakes in California from 2014-2020");
 
+            // x axis and title
             g.append("g")
                 .attr("class", "axis axis--x")
                 .attr("transform", "translate(0," + height + ")")
@@ -124,6 +134,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
                 .attr("font-size","18px")
                 .text("Months");
 
+            //y axis and title
             g.append("g")
                 .attr("class", "axis axis--y")
                 .call(d3.axisLeft(y))
@@ -136,12 +147,14 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
                 .attr("fill", "#000")
                 .text("Number of earthquakes");
 
+            // colour legend
             var legend = g.selectAll(".city")
                 .data(years)
                 .enter()
                 .append("g")
                 .attr("class", "legend");
 
+            // rectangular legends according to year
             legend.append('rect')
                 .attr('x', width - 20)
                 .attr('y', function (d, i) {
@@ -153,6 +166,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
                     return z(d.year);
                 });
 
+            // adding labels to legend
             legend.append('text')
                 .attr('x', width - 8)
                 .attr('y', function (d, i) {
@@ -162,6 +176,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
                     return d.year;
                 });
 
+            // adding tooltip to legend
             legend
                 .on("click", function (d) {
                     reDraw(d.year);
@@ -175,11 +190,13 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
 
             console.log("Check here :",years.filter(function(d){return filterData[d.year]==true;}));
 
+            // getting the data for selected years
             var year = g.selectAll(".year")
                 .data(years.filter(function(d){return filterData[d.year]==true;}))
                 .enter().append("g")
                 .attr("class", "year");
 
+            // adding line for that year
             temp = year.append("path")
                 .attr("class", function(d) {
                     console.log("year" + d.year);
@@ -194,6 +211,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
 
             console.log("Temp : ",temp);
 
+            //adding the text to show which line it is
             year.append("text")
                 .datum(function (d) {
                     return {year: d.year, value: d.values[d.values.length - 1]};
@@ -211,6 +229,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
     }
 
     drawChart(filtered);
+    //redraw with the updated values
     function reDraw(year){
         filtered[year]=!filtered[year];
         console.log("Filtered data :");
@@ -218,6 +237,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
         drawChart(filtered);
     }
 
+    //select the year
     function select(year) {
         year = year.trim();
         console.log("Selceted year : ",year);
@@ -249,6 +269,7 @@ https://blockbuilder.org/Catherine-Yu/535493a01252baa65cc69aed735088ae
             .style("opacity", "1")
     }
 
+    //unselect all the year
     function deselect() {
         d3.selectAll(".line")
             .transition().duration(150).delay(300)

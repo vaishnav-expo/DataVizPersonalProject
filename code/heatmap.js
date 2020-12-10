@@ -2,7 +2,8 @@ var margin = {top: 150, right: 20, bottom: 40, left: 100},
     width = 750 - margin.left - margin.right,
     height = 350 - margin.top - margin.bottom;
 
-var cities = ["CA","Nevada","Idaho"];
+// top three states from symbol map
+var states = ["CA","Nevada","Idaho"];
 
 var monthsSet = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
@@ -21,6 +22,7 @@ var months = {
     12 : "Dec"
 };
 
+// Years for heatmap
 var years = [2018,2019,2020];
 
 var svg = d3.select("#my_heatmap").append("svg")
@@ -33,12 +35,14 @@ d3.csv("monthyearcnt.csv")
     .then((data) => {
         console.log(data);
 
+        // filtering years from the data
         data = data.filter(function(d, i){ return years.includes(+d["year"]) })
 
         console.log(data);
 
+        //preprocessing
         var trial = d3.rollups(data, v=> d3.sum(v,d=>d["numOfEarthquakes"]), d=> {
-                if(cities.includes(d["place"]))
+                if(states.includes(d["place"]))
                     return d["place"];
             }, d => Number(d["month"]),
             d => Number(d["year"]));
@@ -62,6 +66,7 @@ d3.csv("monthyearcnt.csv")
 
         console.log("Max val : ",maxVal);
 
+        // removing undefined values
         finalData = finalData.filter(function( element ) {
             return element[0] !== undefined;
         });
@@ -92,11 +97,12 @@ d3.csv("monthyearcnt.csv")
             .select(".domain").remove()
 
         //y-axis labels
-        //Building y scales and axis:
         var yScale = d3.scaleBand()
             .range([ height, 0 ])
-            .domain(cities)
+            .domain(states)
             .padding(0.05);
+
+        //y-axis
         svg.append("g")
             .style("font-size", 15)
             .call(d3.axisLeft(yScale).tickSize(0))
@@ -104,7 +110,6 @@ d3.csv("monthyearcnt.csv")
 
         //Scale for different colour for different values
         var colorScale = d3.scaleQuantile()
-            // .interpolator(d3.interpolateRgb("#FFcccc", "#FF0000"))
             .domain([0,20,40,200,400,2000])
             .range(["#fef0d9","#fdd49e","#fdbb84","#fc8d59", "#e34a33", "#b30000"]);
 
@@ -136,9 +141,7 @@ d3.csv("monthyearcnt.csv")
                 return colorScale( countPoint[i] );
             });
 
-        console.log("width = ",width)
-        console.log("height = ",height)
-
+        //Custom legend scale
         svg.append("text").attr("x",width - 610).attr("y",height - 260).text("Number of earthquakes").style("font-size", "15px").attr("alignment-baseline","middle");
 
         svg.append("circle").attr("cx",width - 610).attr("cy",height - 225).attr("r", 6).style("fill", "#fef0d9");
@@ -159,7 +162,7 @@ d3.csv("monthyearcnt.csv")
         svg.append("circle").attr("cx",width - 410).attr("cy",height - 205).attr("r", 6).style("fill", "#b30000");
         svg.append("text").attr("x",width - 390).attr("y",height - 205).text(">2000").style("font-size", "15px").attr("alignment-baseline","middle");
 
-        // create a tooltip
+        // tooltip
         var tooltip = d3.select("#my_heatmap")
             .append("div")
             .style("opacity", 0)
@@ -170,6 +173,7 @@ d3.csv("monthyearcnt.csv")
             .style("border-radius", "5px")
             .style("padding", "5px")
 
+        // mouse hovering function for showing number of earthquakes
         var mouseover = function(d) {
             tooltip.style("opacity", 1)
         }
@@ -181,6 +185,7 @@ d3.csv("monthyearcnt.csv")
                 .html("Number of earthquakes : " +formatComma(d[2]))
         }
 
+        // mmouse leaving function for resetting
         var mouseleave = function(d) {
             tooltip.style("opacity", 0)
         }
